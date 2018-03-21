@@ -10,10 +10,10 @@ void segfault_sigaction(int signal, siginfo_t *si, void *arg)
 }
 
 int main() {
-    long long n;
-    long long m;
-    long long max = 0;
-    long long *arf;
+    long n;
+    long m;
+    long max = 0;
+    long *arf;
     
     struct sigaction sa;
 
@@ -26,18 +26,18 @@ int main() {
     sigaction(SIGSEGV, &sa, NULL);
     cin >> n >> m;
 
-    arf = (long long*)malloc (sizeof(long long) * n);
-    memset(arf, 0, sizeof(long long) * n);
+    arf = (long*)malloc (sizeof(long) * n);
+    memset(arf, 0, sizeof(long) * n);
     
-    for(long long a0 = 0; a0 < m; a0++)
+    for(long a0 = 0; a0 < m; a0++)
     {
-        long long a;
-        long long b;
-        long long k;
+        long a;
+        long b;
+        long k;
         cin >> a >> b >> k;
         try
         {
-            for (long long j = a-1; j <= b-1; j++)
+            for (long j = a-1; j <= b-1; j++)
             {
                 arf [j]  += k;
             }
@@ -49,7 +49,7 @@ int main() {
         }
     }
     
-    for (long long g = 0; g < n ; g++)
+    for (long g = 0; g < n ; g++)
         if (arf[g] > max)
             max = arf[g];
     cout << max;
